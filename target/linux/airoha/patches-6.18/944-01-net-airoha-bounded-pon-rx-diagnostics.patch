@@ -50,8 +50,8 @@ index 8702b54..c3c43f9 100644
 +++ b/drivers/net/ethernet/airoha/airoha_eth.h
 @@ -19,2 +19,3 @@
  #include <net/dsa.h>
- #include <net/airoha_qos.h>
 +#include "airoha_pon_rx_diag.h"
+ #include <net/airoha_qos.h>
 @@ -788,4 +789,6 @@ struct airoha_eth {
  	struct net_device *napi_dev;
  	struct dentry *napi_debugfs;
