@@ -120,11 +120,12 @@ index 4c37696..9a3bc8d 100644
  static void airoha_napi_map_init(struct airoha_eth *eth)
  {
  	const char *name;
-@@ -5245,2 +5308,4 @@ static void airoha_napi_map_init(struct airoha_eth *eth)
- 	debugfs_create_file("napi_map", 0400, eth->napi_debugfs, eth,
- 			    &airoha_napi_map_fops);
+@@ -5244,3 +5307,5 @@ static void airoha_napi_map_init(struct airoha_eth *eth)
+ 			    &airoha_qdma_irq_errors_fops);
 +	debugfs_create_file("datapath_stats", 0400, eth->napi_debugfs, eth,
 +			    &airoha_datapath_stats_fops);
+ 	debugfs_create_file("napi_map", 0400, eth->napi_debugfs, eth,
+ 			    &airoha_napi_map_fops);
 diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
 index e62815b..9171f49 100644
 --- a/drivers/net/ethernet/airoha/airoha_eth.h
