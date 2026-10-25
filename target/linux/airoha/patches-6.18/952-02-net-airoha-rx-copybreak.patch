@@ -24,10 +24,7 @@ index 4c37696..9a3bc8d 100644
  #include <linux/seq_file.h>
  #include <linux/tcp.h>
  #include <linux/u64_stats_sync.h>
-@@ -23,6 +24,12 @@
- #include "airoha_regs.h"
- #include "airoha_eth.h"
- 
+@@ -26,3 +27,9 @@
 +/* Opt-in: copy complete small frames out of oversized RX buffers. */
 +static unsigned int rx_copybreak;
 +module_param(rx_copybreak, uint, 0644);
@@ -123,15 +120,11 @@ index 4c37696..9a3bc8d 100644
  static void airoha_napi_map_init(struct airoha_eth *eth)
  {
  	const char *name;
-@@ -5244,6 +5307,8 @@ static void airoha_napi_map_init(struct airoha_eth *eth)
- 			    &airoha_qdma_irq_errors_fops);
+@@ -5245,2 +5308,4 @@ static void airoha_napi_map_init(struct airoha_eth *eth)
  	debugfs_create_file("napi_map", 0400, eth->napi_debugfs, eth,
  			    &airoha_napi_map_fops);
 +	debugfs_create_file("datapath_stats", 0400, eth->napi_debugfs, eth,
 +			    &airoha_datapath_stats_fops);
- }
- 
- static int airoha_probe(struct platform_device *pdev)
 diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
 index e62815b..9171f49 100644
 --- a/drivers/net/ethernet/airoha/airoha_eth.h
