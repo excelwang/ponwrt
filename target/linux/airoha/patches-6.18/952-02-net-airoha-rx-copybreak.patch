@@ -1,4 +1,4 @@
-From f07d4287a7ba33f0c23c8d3afe17b8b9cc6f2a2a Mon Sep 17 00:00:00 2001
+From 0fd902943a4da1ec98146a0720b5606a71f868ec Mon Sep 17 00:00:00 2001
 From: Huajin Wang <7976028+excelwang@users.noreply.github.com>
 Date: Sun, 25 Oct 2026 23:20:33 +0800
 Subject: [PATCH] net: airoha: keep small-frame copybreak opt-in on the current
@@ -8,15 +8,23 @@ Preserve current scatter assembly, LRO and PON control handling. AI assisted reb
 
 Signed-off-by: Huajin Wang <7976028+excelwang@users.noreply.github.com>
 ---
- drivers/net/ethernet/airoha/airoha_eth.c | 80 +++++++++++++++++++++---
+ drivers/net/ethernet/airoha/airoha_eth.c | 81 +++++++++++++++++++++---
  drivers/net/ethernet/airoha/airoha_eth.h |  4 ++
- 2 files changed, 76 insertions(+), 8 deletions(-)
+ 2 files changed, 77 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 4c37696..30296a7 100644
+index 4c37696..9a3bc8d 100644
 --- a/drivers/net/ethernet/airoha/airoha_eth.c
 +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -23,6 +23,12 @@
+@@ -10,6 +10,7 @@
+ #include <linux/pcs/pcs.h>
+ #include <linux/platform_device.h>
+ #include <linux/slab.h>
++#include <linux/sizes.h>
+ #include <linux/seq_file.h>
+ #include <linux/tcp.h>
+ #include <linux/u64_stats_sync.h>
+@@ -23,6 +24,12 @@
  #include "airoha_regs.h"
  #include "airoha_eth.h"
  
@@ -29,7 +37,7 @@ index 4c37696..30296a7 100644
  static const struct net_device_ops airoha_netdev_ops;
  
  u32 airoha_rr(void __iomem *base, u32 offset)
-@@ -1052,14 +1058,35 @@ static int airoha_qdma_rx_process(struct airoha_queue *q, int budget)
+@@ -1052,14 +1059,35 @@ static int airoha_qdma_rx_process(struct airoha_queue *q, int budget)
  		}
  
  		if (!q->skb) { /* first buffer */
@@ -73,7 +81,7 @@ index 4c37696..30296a7 100644
  			q->skb->dev = netdev;
  			q->skb->ip_summed = CHECKSUM_UNNECESSARY;
  			skb_record_rx_queue(q->skb, qid);
-@@ -5231,6 +5258,41 @@ static int airoha_napi_map_show(struct seq_file *s, void *unused)
+@@ -5231,6 +5259,41 @@ static int airoha_napi_map_show(struct seq_file *s, void *unused)
  }
  DEFINE_SHOW_ATTRIBUTE(airoha_napi_map);
  
@@ -115,7 +123,7 @@ index 4c37696..30296a7 100644
  static void airoha_napi_map_init(struct airoha_eth *eth)
  {
  	const char *name;
-@@ -5244,6 +5306,8 @@ static void airoha_napi_map_init(struct airoha_eth *eth)
+@@ -5244,6 +5307,8 @@ static void airoha_napi_map_init(struct airoha_eth *eth)
  			    &airoha_qdma_irq_errors_fops);
  	debugfs_create_file("napi_map", 0400, eth->napi_debugfs, eth,
  			    &airoha_napi_map_fops);
