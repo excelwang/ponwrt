@@ -1,5 +1,5 @@
 From f5fe097c098595defe11097d485d493d29a9ab61 Mon Sep 17 00:00:00 2001
-From: Your Name <you@example.com>
+From: Huajin Wang <7976028+excelwang@users.noreply.github.com>
 Date: Sun, 25 Oct 2026 22:27:38 +0800
 Subject: [PATCH] bridge: expose source-aware multicast forwarding state
 

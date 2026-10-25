@@ -1,5 +1,5 @@
 From dcbadcad334d8e34a22cec280bdeeb3a6a2faeca Mon Sep 17 00:00:00 2001
-From: Your Name <you@example.com>
+From: Huajin Wang <7976028+excelwang@users.noreply.github.com>
 Date: Sun, 25 Oct 2026 22:40:42 +0800
 Subject: [PATCH] ipmr: snapshot explicit ingress multicast groups before
  report

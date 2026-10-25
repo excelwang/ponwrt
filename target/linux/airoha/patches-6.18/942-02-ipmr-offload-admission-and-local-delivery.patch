@@ -1,5 +1,5 @@
 From 04944f4845092f961dd488f1863cc10e99bd30b8 Mon Sep 17 00:00:00 2001
-From: Your Name <you@example.com>
+From: Huajin Wang <7976028+excelwang@users.noreply.github.com>
 Date: Sun, 25 Oct 2026 22:27:38 +0800
 Subject: [PATCH] ipmr: expose routed multicast admission and local-delivery
  state

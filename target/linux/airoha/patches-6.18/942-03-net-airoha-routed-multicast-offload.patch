@@ -1,5 +1,5 @@
 From 06af885b4d44ced67c5a4f0ebee01255975e6564 Mon Sep 17 00:00:00 2001
-From: Your Name <you@example.com>
+From: Huajin Wang <7976028+excelwang@users.noreply.github.com>
 Date: Sun, 25 Oct 2026 22:32:11 +0800
 Subject: [PATCH] net: airoha: add scoped routed IPv4 multicast offload
 
