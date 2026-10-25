@@ -20,13 +20,10 @@ diff --git a/drivers/net/ethernet/airoha/Makefile b/drivers/net/ethernet/airoha/
 index a8b7b0b..bf46e08 100644
 --- a/drivers/net/ethernet/airoha/Makefile
 +++ b/drivers/net/ethernet/airoha/Makefile
-@@ -8,5 +8,5 @@ obj-$(CONFIG_NET_AIROHA_PRIORITY_KUNIT_TEST) += airoha_priority_test.o
- obj-$(CONFIG_NET_AIROHA) += airoha-eth.o
- airoha-eth-y := airoha_eth.o airoha_ppe.o
+@@ -10,2 +10,2 @@ obj-$(CONFIG_NET_AIROHA_PRIORITY_KUNIT_TEST) += airoha_priority_test.o
 -airoha-eth-$(CONFIG_DEBUG_FS) += airoha_ppe_debugfs.o
 +airoha-eth-$(CONFIG_DEBUG_FS) += airoha_ppe_debugfs.o airoha_pon_rx_diag.o
  obj-$(CONFIG_NET_AIROHA_NPU) += airoha_npu.o
- obj-$(CONFIG_NET_AIROHA_QOS_KUNIT_TEST) += airoha_qos_test.o
 diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
 index 37f53f9..03dc634 100644
 --- a/drivers/net/ethernet/airoha/airoha_eth.c
@@ -51,12 +48,10 @@ diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/air
 index 8702b54..c3c43f9 100644
 --- a/drivers/net/ethernet/airoha/airoha_eth.h
 +++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -19,4 +19,5 @@
+@@ -19,2 +19,3 @@
  #include <net/dsa.h>
  #include <net/airoha_qos.h>
 +#include "airoha_pon_rx_diag.h"
- 
- #define AIROHA_MAX_NUM_GDM_PORTS	4
 @@ -788,4 +789,6 @@ struct airoha_eth {
  	struct net_device *napi_dev;
  	struct dentry *napi_debugfs;
