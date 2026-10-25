@@ -1,5 +1,5 @@
 From c1bef446ddd7bf144852af133ed19ba8a975e367 Mon Sep 17 00:00:00 2001
-From: Your Name <you@example.com>
+From: Huajin Wang <7976028+excelwang@users.noreply.github.com>
 Date: Sun, 25 Oct 2026 22:48:48 +0800
 Subject: [PATCH] pmdomain: airoha: add opt-in native EN7581 PLL control
 
