@@ -18,15 +18,10 @@ diff --git a/drivers/net/ethernet/airoha/Makefile b/drivers/net/ethernet/airoha/
 index 2bbfbb7..1ed6f00 100644
 --- a/drivers/net/ethernet/airoha/Makefile
 +++ b/drivers/net/ethernet/airoha/Makefile
-@@ -8,7 +8,7 @@ obj-$(CONFIG_NET_AIROHA_MCAST_KUNIT_TEST) += airoha_mcast_test.o
- 
- obj-$(CONFIG_NET_AIROHA) += airoha-eth.o
+@@ -10,2 +10,2 @@ obj-$(CONFIG_NET_AIROHA_MCAST_KUNIT_TEST) += airoha_mcast_test.o
  airoha-eth-y := airoha_eth.o airoha_ppe.o
 -airoha-eth-$(CONFIG_NET_AIROHA_MCAST) += airoha_mcast.o
 +airoha-eth-$(CONFIG_NET_AIROHA_MCAST) += airoha_mcast.o airoha_ifc.o
- airoha-eth-$(CONFIG_DEBUG_FS) += airoha_ppe_debugfs.o
- obj-$(CONFIG_NET_AIROHA_NPU) += airoha_npu.o
- obj-$(CONFIG_NET_AIROHA_QOS_KUNIT_TEST) += airoha_qos_test.o
 diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
 index 771e2de..3cdf9e2 100644
 --- a/drivers/net/ethernet/airoha/airoha_eth.c
